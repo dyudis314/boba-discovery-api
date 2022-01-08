@@ -21,7 +21,7 @@ headers = {
     "Authorization": f"Bearer {YELP_SECRET}"
 }
 
-@app.route('/boba', methods=['GET'])
+@app.route('/', methods=['GET'])
 @cross_origin()
 def get_boba():
     print("Hello backend...")
