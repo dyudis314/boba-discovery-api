@@ -21,17 +21,17 @@ headers = {
     "Authorization": f"Bearer {YELP_SECRET}"
 }
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/', methods=['GET'])
 @cross_origin()
 def get_boba():
     print("Hello backend...")
-    businesses = requests.post(
+    businesses = requests.get(
         search_url,
         headers=headers
     ).json()['businesses']
     random_business_id = random.choice(businesses)['id']
 
-    business_data = requests.post(
+    business_data = requests.get(
         f"https://api.yelp.com/v3/businesses/{random_business_id}",
         headers=headers
     ).json()
