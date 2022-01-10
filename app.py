@@ -25,13 +25,13 @@ headers = {
 @cross_origin()
 def get_boba():
     print("Hello backend...")
-    businesses = requests.get(
+    businesses = requests.post(
         search_url,
         headers=headers
     ).json()['businesses']
     random_business_id = random.choice(businesses)['id']
 
-    business_data = requests.get(
+    business_data = requests.post(
         f"https://api.yelp.com/v3/businesses/{random_business_id}",
         headers=headers
     ).json()
