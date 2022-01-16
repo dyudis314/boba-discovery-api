@@ -6,6 +6,8 @@ import json
 import random
 import requests
 
+from flask import render_template
+
 app = flask.Flask(__name__)
 cors = CORS(app)
 
@@ -36,11 +38,12 @@ def get_boba():
         headers=headers
     ).json()
 
-    response = app.response_class(
-        response=json.dumps(business_data, default=str),
-        status=200,
-        mimetype='application/json'
-    )
-    return response
+    #response = app.response_class(
+    #    response=json.dumps(business_data, default=str),
+    #    status=200,
+    #    mimetype='application/json'
+    #)
+
+    return render_template('json.html', json=json.dumps(business_data, default=str))
 
 app.run()
