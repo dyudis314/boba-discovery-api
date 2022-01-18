@@ -45,5 +45,5 @@ def get_boba():
     #)
 
     return render_template('json.html', json=json.dumps(business_data, default=str))
-
-app.run()
+if __name__ == 'app':
+    app.run()
