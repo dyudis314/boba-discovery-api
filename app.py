@@ -6,14 +6,10 @@ import json
 import random
 import requests
 
-from flask import render_template
+##from flask import render_template
 
 app = flask.Flask(__name__)
 cors = CORS(app)
-
-
-#client id: llo61bAIrIkI3AqTPjhgtA
-#api key: mxbpTcR535q6bkblaytUq1C6Ytdul4XFrgdNWzgZxniuOwXMmAaztWvCVRRJk9YmDI4KK7LGSWR3_d1IfKWFuDzZ1zTW82K9BHTIPVAKTF-s5KrbLPVqcwJ6HKbXYXYx
 
 
 YELP_SECRET = "mxbpTcR535q6bkblaytUq1C6Ytdul4XFrgdNWzgZxniuOwXMmAaztWvCVRRJk9YmDI4KK7LGSWR3_d1IfKWFuDzZ1zTW82K9BHTIPVAKTF-s5KrbLPVqcwJ6HKbXYXYx"
@@ -38,12 +34,13 @@ def get_boba():
         headers=headers
     ).json()
 
-    #response = app.response_class(
-    #    response=json.dumps(business_data, default=str),
-    #    status=200,
-    #    mimetype='application/json'
-    #)
+    response = app.response_class(
+    response=json.dumps(business_data, default=str),
+    status=200,
+    mimetype='application/json'
+    )
+    return response
 
-    return render_template('json.html', json=json.dumps(business_data, default=str))
+   ## return render_template('json.html', json=json.dumps(business_data, default=str))
 if __name__ == '__app__':
     app.run()
